@@ -121,6 +121,7 @@ export const ArtCreateView = () => {
         metadata,
         setNFTcreateProgress,
         attributes.properties?.maxSupply,
+        () => {}
       );
 
       if (_nft) setNft(_nft);
@@ -1186,7 +1187,7 @@ const WaitingStep = (props: {
   );
 };
 
-const Congrats = (props: {
+export const Congrats = (props: {
   nft?: {
     metadataAccount: StringPublicKey;
   },

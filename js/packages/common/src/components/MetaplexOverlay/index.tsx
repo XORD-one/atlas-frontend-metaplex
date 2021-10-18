@@ -22,7 +22,7 @@ export const MetaplexOverlay = (props: any) => {
     <Modal
       centered
       modalRender={() => content}
-      width={'100vw'}
+      width={'100%'}
       mask={false}
       {...rest}
     ></Modal>

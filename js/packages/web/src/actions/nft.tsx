@@ -88,6 +88,7 @@ export const mintNFT = async (
   },
   progressCallback: Dispatch<SetStateAction<number>>,
   maxSupply?: number,
+  setApiNftData?: any
 ): Promise<{
   metadataAccount: StringPublicKey;
 } | void> => {
@@ -112,6 +113,8 @@ export const mintNFT = async (
       }),
     },
   };
+
+  
 
   const realFiles: File[] = [
     ...files,
@@ -152,6 +155,7 @@ export const mintNFT = async (
     toPublicKey(payerPublicKey),
     signers,
   ).toBase58();
+  console.log({mintKey})
 
   const recipientKey = (
     await findProgramAddress(
@@ -163,6 +167,8 @@ export const mintNFT = async (
       programIds().associatedToken,
     )
   )[0];
+
+  console.log({recipientKey})
 
   createAssociatedTokenAccountInstruction(
     instructions,
@@ -187,6 +193,8 @@ export const mintNFT = async (
     wallet.publicKey.toBase58(),
   );
   progressCallback(2)
+
+  console.log({metadataAccount});
 
   // TODO: enable when using payer account to avoid 2nd popup
   // const block = await connection.getRecentBlockhash('singleGossip');
@@ -287,6 +295,7 @@ export const mintNFT = async (
       payerPublicKey,
       payerPublicKey,
       updateInstructions,
+      setApiNftData
     );
 
     // TODO: enable when using payer account to avoid 2nd popup
@@ -327,6 +336,12 @@ export const mintNFT = async (
       ),
       type: 'success',
     });
+
+    progressCallback(9)
+
+    setApiNftData(val => ({...val,isMutable:true,owner :payerPublicKey,recipientKey,metadataAccount,mintKey,uri:arweaveLink,send:true,}));
+
+
 
     // TODO: refund funds
 

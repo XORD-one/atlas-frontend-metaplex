@@ -496,6 +496,8 @@ export const AuctionCreateView = () => {
       participationSafetyDepositDraft,
       QUOTE_MINT.toBase58(),
     );
+
+    console.log({_auctionObj})
     setAuctionObj(_auctionObj);
   };
 
@@ -583,6 +585,8 @@ export const AuctionCreateView = () => {
       confirm={() => {
         setStepsVisible(false);
         gotoNextStep();
+
+        console.log({attributes})
       }}
       connection={connection}
     />

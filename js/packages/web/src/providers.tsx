@@ -10,6 +10,11 @@ import { ConfettiProvider } from './components/Confetti';
 import { AppLayout } from './components/Layout';
 import { LoaderProvider } from './components/Loader';
 import { CoingeckoProvider } from './contexts/coingecko';
+import { ThemeProvider } from "@material-ui/styles";
+import theme from './theme';
+
+
+
 
 export const Providers: FC = ({ children }) => {
   return (
@@ -21,13 +26,14 @@ export const Providers: FC = ({ children }) => {
               ownerAddress={process.env.NEXT_PUBLIC_STORE_OWNER_ADDRESS}
               storeAddress={process.env.NEXT_PUBLIC_STORE_ADDRESS}
             >
+              <ThemeProvider theme={theme}>
               <MetaProvider>
                 <LoaderProvider>
                   <ConfettiProvider>
                     <AppLayout>{children}</AppLayout>
                   </ConfettiProvider>
                 </LoaderProvider>
-              </MetaProvider>
+              </MetaProvider></ThemeProvider>
             </StoreProvider>
           </CoingeckoProvider>
         </AccountsProvider>

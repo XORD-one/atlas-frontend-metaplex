@@ -13,6 +13,15 @@ import {
 } from './views';
 import { AdminView } from './views/admin';
 import { BillingView } from './views/auction/billing';
+import Landing from "./atlas-containers/Landing.js";
+import CreateNft from './atlas-containers/CreateNft';
+import Marketplace from './atlas-containers/Marketplace.js';
+import SingleNft from './atlas-containers/SingleNft';
+import Profile from './atlas-containers/Profile';
+import { IS_METAPLEX } from './config/constants';
+import CreateNewCollection from './atlas-containers/CreateNewCollection';
+import MyCollections from './atlas-containers/MyCollections';
+import Collection from './atlas-containers/Collection';
 
 export function Routes() {
   return (
@@ -54,7 +63,29 @@ export function Routes() {
               path="/auction/:id/billing"
               component={() => <BillingView />}
             />
-            <Route path="/" component={() => <HomeView />} />
+            
+
+            {IS_METAPLEX ? <Route path="/" component={() => <HomeView />} /> : <>
+            <Route path="/landing" component={() => <Landing />} />
+            <Route path="/create-nft" component={() => <CreateNft />} />
+            <Route path="/marketplace" component={() => <Marketplace />} />
+            <Route path="/single-nft" component={() => <SingleNft />} />
+            <Route path="/profile" component={() => <Profile />} />
+            <Route path="/create-collection" component={() => <CreateNewCollection />} />
+            <Route path="/collections" component={MyCollections}
+             />
+
+             
+            <Route
+              
+              path="/collection/:id"
+              component={Collection}
+            />
+            </>
+             }
+
+
+            
           </Switch>
         </Providers>
       </HashRouter>

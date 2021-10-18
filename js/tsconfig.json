@@ -4,14 +4,23 @@
     "target": "es6",
     "module": "es2015",
     "lib": ["es2015", "es2016", "es2017", "dom"],
-    "strict": true,
+    "strict": false,
     "sourceMap": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noImplicitAny": true,
-    "typeRoots": ["types", "node_modules/@types"]
+    "typeRoots": ["types", "node_modules/@types"],
+    "noImplicitUseStrict": true,
+    "noImplicitAny": false,   
+     "strictFunctionTypes": false
+,    "alwaysStrict": false
+
+
+
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  
+
 }

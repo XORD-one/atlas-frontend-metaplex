@@ -527,6 +527,9 @@ export async function updateMetadata(
         : primarySaleHappened,
   });
   const txnData = Buffer.from(serialize(METADATA_SCHEMA, value));
+
+  console.log({ txnData });
+
   const keys = [
     {
       pubkey: toPublicKey(metadataAccount),
@@ -611,6 +614,9 @@ export async function createMetadata(
       isWritable: false,
     },
   ];
+
+  console.log({ txnData });
+
   instructions.push(
     new TransactionInstruction({
       keys,
@@ -629,6 +635,7 @@ export async function createMasterEdition(
   mintAuthorityKey: StringPublicKey,
   payer: StringPublicKey,
   instructions: TransactionInstruction[],
+  setApiNftData?: any,
 ) {
   const metadataProgramId = programIds().metadata;
 
@@ -657,6 +664,14 @@ export async function createMasterEdition(
 
   const value = new CreateMasterEditionArgs({ maxSupply: maxSupply || null });
   const data = Buffer.from(serialize(METADATA_SCHEMA, value));
+
+  console.log({ editionAccount });
+
+  setApiNftData((val: any) => ({
+    ...val,
+    edition: editionAccount,
+    masterEdition: editionAccount,
+  }));
 
   const keys = [
     {

@@ -46,6 +46,8 @@ export const ArtworksView = () => {
     }
   }, [connected, setActiveKey]);
 
+  console.log("Metaplex item => ",items)
+
   const artworkGrid = (
     <Masonry
       breakpointCols={breakpointColumnsObj}

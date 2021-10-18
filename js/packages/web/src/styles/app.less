@@ -6,10 +6,48 @@ html {
   width: 100vw;
   overflow-x: hidden;
 }
-#root {
-  height: 100%;
-  font-family: 'Graphik Web', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 45% !important; /* 62.5% of 16px = 10px */
+}
+
+@media only screen and (min-width: 1600px) {
+  html {
+    font-size: 55% !important; /* 62.5% of 16px = 10px */
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  html {
+    font-size: 110% !important; /* 62.5% of 16px = 10px */
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 45% !important; /* 62.5% of 16px = 10px */
+  }
+}
+
+body {
+  background: #000;
+  font-family: 'Poppins';
+}
+// #root {
+//   height: 100%;
+//   font-family: 'Graphik Web', sans-serif;
+// }
 
 #root::before {
   content: '';
@@ -29,7 +67,7 @@ body {
 
   font-style: normal;
   font-weight: normal;
-  font-family: 'Graphik Web' !important;
+  font-family: 'Poppins';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -93,7 +131,7 @@ code {
   iframe {
     height: 300px;
     object-fit: cover;
-    border:none;
+    border: none;
   }
 }
 
